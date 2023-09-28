@@ -1,0 +1,42 @@
+Directory: 
+  image: /kaggle_matching/data/image-matching-challenge-2022/
+  submission_csv: /kaggle_matching/submission.csv
+LoFTR:
+  weight: /kaggle_matching/weight/loftr_outdoor.ckpt
+  superpoint:
+    nms_radius: 4
+    keypoint_threshold: 0.005
+    max_keypoints: 2048
+  superglue:
+    weights: outdoor
+    sinkhorn_iterations: 100
+    match_threshold: 0.2
+  input_longside: 1200
+  match_threshold: 0.3
+
+SuperGlue:
+  superpoint:
+    nms_radius: 3
+    keypoint_threshold: 0.005
+    max_keypoints: 2048
+  superglue:
+    weights: outdoor
+    sinkhorn_iterations: 100
+    match_threshold: 0.2
+  match_threshold: 0.3
+
+Matcher:
+  - name: loftr
+    tta:
+      - orig
+      - flip_lr
+    forward_type: null
+    input_longside: null
+  - name: superglue
+    tta_groups:
+      - [orig, orig]
+      - [orig, rot_r10]
+      - [rot_r10, orig]
+      - [flip_lr, flip_lr]
+    forward_type: cross
+    input_longside: 1600
