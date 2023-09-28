@@ -1,5 +1,6 @@
 🔗 **Competition Link**: [Image Matching Challenge 2022](https://www.kaggle.com/competitions/image-matching-challenge-2022/overview)
 
+### 🏆 Result: **🥈50/642🥈**
 ### 📝 Brief Summary
 
 - **Ensemble of LoFTR, SuperGlue**: The framework employs an ensemble of LoFTR and SuperGlue with the resize calibration and appropriate number of keypoints for each model.  
